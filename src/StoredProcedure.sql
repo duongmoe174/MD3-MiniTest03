@@ -18,4 +18,12 @@ begin
         from deliverynotedetail d join material m on m.id = d.material_id and m.code = materialCode;
 end //
 delimiter ;
-call getTotalExportPrice('VT002')
+call getTotalExportPrice('VT002');
+
+delimiter //
+create procedure getNumber (materialCode varchar(50))
+begin
+    select w.firstStock from warehouse w join material m on m.id = w.material_id and m.code = materialCode ;
+end //
+delimiter ;
+call getNumber('VT002');
